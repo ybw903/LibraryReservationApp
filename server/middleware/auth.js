@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 const authMiddleware = (req,res, next)=>{
-    const token = req.headers['x-access-token']||req.query.token
+    const token = req.headers.authorization.split('Bearer ')[1];
     console.log(token);
     if(!token){
         return res.status(403).json({
@@ -24,6 +24,7 @@ const authMiddleware = (req,res, next)=>{
             message: error.message
         })
     }
+    
     p.then((decoded)=>{
         req.decoded=decoded
         next()

@@ -1,12 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const models = require('./models').sequelize;
-const app = express()
 const jwt_config = require('./config/jwt_config');
 const PORT = process.env.PORT || 4000;
 
-app.use(bodyParser.json());
+const app = express()
+
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json());
 
 app.set('jwt-secrete',jwt_config.secrete);
 
