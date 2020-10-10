@@ -6,5 +6,5 @@ export function authlogin (username,password){
 }
 
 export function checkStatus(){
-    return axios.get('/api/auth/check',{headers:{'x-access-token':Cookie.get('user')}});
+    return axios.get('/api/auth/check',{headers:{'Authorization': 'Bearer '+ Cookie.get('user')}});
 } 
